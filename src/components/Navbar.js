@@ -10,9 +10,6 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse justify-content-end" id="navigation">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to='/'>
-                  <span className="no-icon">Log out</span>
-                </Link>
               </li>
             </ul>
           </div>

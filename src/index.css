@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.sidebar:after, body>.navbar-collapse:after {
+    background: #9368E9;
+    background: linear-gradient(to bottom, #730000 0%, #000102 100%);
+    background-size: 150% 150%;
+    z-index: 3;
+    opacity: 1;
+}
