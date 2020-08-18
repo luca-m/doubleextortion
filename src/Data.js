@@ -11,9 +11,6 @@ import axios from "axios";
 import queryString from 'query-string'
 
 
-var dataurl = "https://drive.google.com/uc?export=download&id=1tvBoIFGeqOEMMFSvgVyNO0UEi1zlEpcR"
-var dataurl2= "https://www.googleapis.com/drive/v2/files/1tvBoIFGeqOEMMFSvgVyNO0UEi1zlEpcR?alt=media&source=downloadUrl"
-
 var dataurl3="https://script.google.com/macros/s/AKfycbzaanEd0xYDgdnBwgRAOcyzByWXI-mhzC0EUln7r_Qg5-XR9-E/exec"
 
 
