@@ -5,6 +5,11 @@ import Main from './components/Main'
 
 import Data from './Data'
 
+import ReactGA from 'react-ga'
+
+ReactGA.initialize('UA-175756921-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 class App extends Component {
 
   componentDidMount(){
