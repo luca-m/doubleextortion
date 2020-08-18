@@ -9,14 +9,11 @@ class Footer extends Component {
           <nav>
             <ul className="footer-menu">
               <li>
-                <Link to="/">
-                  Home
-                </Link>
               </li>
 
             </ul>
             <p className="copyright text-center">
-              © 2020
+              DoubleExtortion - Ransomware and Breach Tracker - 2020
           </p>
           </nav>
         </div>

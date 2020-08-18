@@ -223,7 +223,7 @@ class Dashboard extends Component {
                        {
                         x: dataSector.date,
                         y: dataSector.sector,
-                        mode: 'markers+text',
+                        mode: 'markers',
                         type:'scatter',
                         marker: {
                           size: dataSector.size.map(x=>x*10)
