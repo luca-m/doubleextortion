@@ -17,20 +17,28 @@ class Dashboard extends Component {
   loadRansomwareEvents = () =>{
     console.info('loading events in dashboard')
     var events=JSON.parse(window.sessionStorage.getItem('events'))
+    console.info("retrieved "+events.length+" events ")
     var sectors = events.map(e=>e.sector);
+    var actors  = events.map(e=>e.actor);
     var sectorsCount={}
+    var actorsCount={}
     sectors.forEach(s=>{ 
       if(sectorsCount[s]){sectorsCount[s]+=1}else{sectorsCount[s]=1} 
     })
-    this.state.revents=events
-    this.state.sectorPie={ 
+    actors.forEach(s=>{ 
+      if(actorsCount[s]){actorsCount[s]+=1}else{actorsCount[s]=1} 
+    })
+    let sectorPie={ 
         labels:Object.keys(sectorsCount),
-        series:Object.values(sectorsCount)
-      }
-    let pie2=[]
-    for (let k in sectorsCount){
-      pie2.push({ id:k, value:sectorsCount[k], label:k, color: "hsl(167, 70%, 50%)"})
+        series:[]//Object.values(sectorsCount)
     }
+    let actorPie={ 
+        labels:Object.keys(actorsCount),
+        series:[]//Object.values(actorsCount)
+    }
+    sectorPie.labels.forEach(k=>{ sectorPie.series.push(sectorsCount[k]) })
+    actorPie.labels.forEach(k=>{ actorPie.series.push(actorsCount[k]) })
+
     let tl = events.map(e=>{ 
       return {date:e.date.split('T')[0], sector:e.sector}
     })
@@ -41,13 +49,17 @@ class Dashboard extends Component {
       if (timelineCount[t.date]){ timelineCount[t.date]+=1 } else { timelineCount[t.date]=1 }
       if (timelineSectorCount[`${t.date}_${t.sector}`]){ timelineSectorCount[`${t.date}_${t.sector}`]+=1 } else { timelineSectorCount[`${t.date}_${t.sector}`]=1 }
     })
+    
+    this.state.sectorPie=sectorPie
+    this.state.actorPie=actorPie
+    this.state.revents=events
     this.state.timeline=timelineCount;
     this.state.timelineSector=timelineSectorCount;
-    this.state.sectorPie2=pie2
   }
 
   render() {
     let dataPie = this.state['sectorPie']
+    let dataPie2 = this.state['actorPie']
     let dataTimeline = {
       labels: [],
       series: []
@@ -81,11 +93,7 @@ class Dashboard extends Component {
               
             <div className="row">
             <div className="col-md-6">
-            </div>
-            <div className="col-md-8">
-            </div>
-            </div>
-              
+
             <div className="card">
                 <div className="card-header ">
                   <h4 className="card-title">Industry Sector Statistics</h4>
@@ -105,7 +113,7 @@ class Dashboard extends Component {
                          values: dataPie.series,
                          labels: dataPie.labels,
                          type: 'pie',
-                         colorscale:'D3',
+                         colorscale:'Prism',
                          pull:0.05,
                          automargin:true,
                          marker:{line:{width:0.5}}
@@ -119,6 +127,49 @@ class Dashboard extends Component {
                   <hr />
                 </div>
               </div>
+
+
+            </div>
+            <div className="col-md-6">
+
+            <div className="card">
+                <div className="card-header ">
+                  <h4 className="card-title">Ransomware Actors Statistics</h4>
+                  <p className="card-category">Attacks</p>
+                </div>
+                <div className="card-body">
+
+                  <Plot
+                    style={{
+                         display: 'flex',
+                         alignItems: 'center',
+                         justifyContent: 'center',
+                     }}
+                     data={[
+                       {
+                         name:'actors',
+                         values: dataPie2.series,
+                         labels: dataPie2.labels,
+                         type: 'pie',
+                         colorscale:'Prism',
+                         pull:0.05,
+                         automargin:true,
+                         marker:{line:{width:0.5}}
+                       }
+                     ]}
+                     layout={{ autosize:true, font:{size:10} }}
+                     config={{ displayModeBar:false,modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
+                   />
+                  
+
+                  <hr />
+                </div>
+              </div>
+
+
+            </div>
+            </div>
+              
               
               <div className="card">
                 <div className="card-header ">

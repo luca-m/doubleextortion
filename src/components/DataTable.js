@@ -21,7 +21,9 @@ class DataTable extends Component {
   }
   
   loadRansomwareEvents = () =>{
+    console.info('loading events in datatable')
     var events=JSON.parse(window.sessionStorage.getItem('events'))
+    console.info("retrieved "+events.length+" events ")
     this.state.revents=events
   }
 

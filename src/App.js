@@ -8,7 +8,7 @@ import Data from './Data'
 class App extends Component {
 
   componentDidMount(){
-    Data.retrieveRansomwareEventsLocal()
+    Data.retrieveRansomwareEvents()
   }
 
   render() {
