@@ -14,7 +14,7 @@ class Main extends Component {
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/datatable" component={DataTable} />
-          <Redirect from='*' to='/dashboard' />
+          <Redirect from='*' to='#/dashboard' />
         </Switch>
         <Footer />
       </div>

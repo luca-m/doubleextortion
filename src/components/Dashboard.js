@@ -16,7 +16,7 @@ class Dashboard extends Component {
 
   loadRansomwareEvents = () =>{
     console.info('loading events in dashboard')
-    var events=JSON.parse(window.sessionStorage.getItem('events'))
+    var events=JSON.parse(window.sessionStorage.getItem('events')||"[]")
     console.info("retrieved "+events.length+" events ")
     var sectors = events.map(e=>e.sector);
     var actors  = events.map(e=>e.actor);
