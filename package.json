@@ -4,7 +4,10 @@
   "private": true,
   "homepage": "http://doubleextortion.com/",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
+    "material-ui": "^0.20.2",
     "plotly.js": "^1.54.7",
     "react": "^16.13.1",
     "react-bootstrap-table-next": "^4.0.3",
