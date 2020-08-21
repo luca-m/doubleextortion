@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import ChartistGraph from 'react-chartist'
 import Plot from 'react-plotly.js';
 
 
@@ -9,16 +8,20 @@ class Dashboard extends Component {
     super(props)
     this.state={}
     this.loadRansomwareEvents()
+    this.state.loaddata=false;
   }
 
-  compoentDidMount(){
+  componentDidMount=()=>{
+    this.loadRansomwareEvents()
+  }
+  compoentDidUnMount=()=>{
   }
 
   loadRansomwareEvents = () =>{
     console.info('loading events in dashboard')
     var events=JSON.parse(window.sessionStorage.getItem('events')||"[]")
     console.info("retrieved "+events.length+" events ")
-    var sectors = events.map(e=>e.sector);
+    var sectors = events.map(e=>e.sector||'Unspecified');
     var actors  = events.map(e=>e.actor);
     var sectorsCount={}
     var actorsCount={}
@@ -47,7 +50,7 @@ class Dashboard extends Component {
     tl.sort((x,y)=>{x.date<y.date})
       .forEach(t=>{ 
       if (timelineCount[t.date]){ timelineCount[t.date]+=1 } else { timelineCount[t.date]=1 }
-      if (timelineSectorCount[`${t.date}_${t.sector}`]){ timelineSectorCount[`${t.date}_${t.sector}`]+=1 } else { timelineSectorCount[`${t.date}_${t.sector}`]=1 }
+      if (timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]){ timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]+=1 } else { timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]=1 }
     })
     
     this.state.sectorPie=sectorPie
@@ -58,6 +61,10 @@ class Dashboard extends Component {
   }
 
   render() {
+
+    if (this.props.loading){ return <div></div> }
+    else { this.loadRansomwareEvents() }
+
     let dataPie = this.state['sectorPie']
     let dataPie2 = this.state['actorPie']
     let dataTimeline = {
@@ -85,7 +92,6 @@ class Dashboard extends Component {
         dataSector.sector.push(d.sector)
         dataSector.size.push(this.state['timelineSector'][d.key])
       })
-    console.info(dataSector)
 
     return (
       <div className="content">
@@ -209,7 +215,7 @@ class Dashboard extends Component {
               <div className="card">
                 <div className="card-header ">
                   <h4 className="card-title">Extortions per Industry over Time</h4>
-                  <p className="card-category">Attacks</p>
+                  <p className="card-category">Victims</p>
                 </div>
                 <div className="card-body " >
 

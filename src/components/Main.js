@@ -9,13 +9,14 @@ import DataTable from './DataTable'
 class Main extends Component {
 
   render() {
+    console.info('main',this.props.loading)
     return (
       <div className="main-panel">
         <Navbar />
         <Switch>
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/datatable" component={DataTable} />
-          <Redirect from='*' to='#/dashboard' />
+          <Route path="/dashboard" render={(props) => ( <Dashboard loading={this.props.loading} /> )} />
+          <Route path="/datatable" render={(props) => ( <DataTable loading={this.props.loading} /> )} />
+          <Redirect from='*' to='/dashboard' />
         </Switch>
         <Footer />
       </div>

@@ -3,6 +3,7 @@ import { BrowserRouter , Route ,HashRouter as Router} from 'react-router-dom'
 import MetaTags from 'react-meta-tags';
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
+import Snackbar from '@material-ui/core/Snackbar'
 
 import Data from './Data'
 
@@ -13,22 +14,37 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
 
+  constructor(props){
+    super(props)
+    this.state={}
+    this.state.loading=true;
+    this.state.loading_message="Loading Data";
+  }
   componentDidMount(){
-    Data.retrieveRansomwareEvents()
+    Data.retrieveRansomwareEvents(this.loadingComplete)
+  }
+
+  loadingComplete=(data,err)=>{
+    this.setState({loading:false});
+    console.info('data loading complete')
+
   }
 
   render() {
     return (
       <div className="wrapper">
-        <MetaTags>
-            <title>DoubleExtortion Tracker</title>
-            <meta id="meta-description" name="description" content="Tracking ransomware events in the wild" />
-            <meta id="og-title" property="og:title" content="DoubleExtortion Tracker" />
-            <meta id="og-image" property="og:image" content="public/screen.jpg" />
-        </MetaTags>
+        <Snackbar
+          anchorOrigin={{ 
+            vertical: 'top',
+            horizontal: 'center'
+          }}
+          open={this.state.loading}
+          onClose={ ()=>{} }
+          message={this.state.loading_message}
+        />
         <Router>
           <Sidebar />
-          <Route path='/' component={Main} />
+          <Route path='/' render={(props) => ( <Main loading={this.state.loading} />  )} /> 
         </Router>
       </div>
     )

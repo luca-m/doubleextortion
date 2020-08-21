@@ -17,7 +17,7 @@ class Footer extends Component {
               <li>
               </li>
             </ul>
-            <p classname="copyright" style={{'textAlign':'center'}}>
+            <p className="text-center" style={{'textAlign':'center'}}>
             <IconButton href="https://github.com/luca-m/" target="_blank" >
               <Icon className="fa fa-github" />
             </IconButton>
