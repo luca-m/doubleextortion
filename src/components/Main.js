@@ -9,7 +9,6 @@ import DataTable from './DataTable'
 class Main extends Component {
 
   render() {
-    console.info('main',this.props.loading)
     return (
       <div className="main-panel">
         <Navbar />
