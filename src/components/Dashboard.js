@@ -43,14 +43,18 @@ class Dashboard extends Component {
     actorPie.labels.forEach(k=>{ actorPie.series.push(actorsCount[k]) })
 
     let tl = events.map(e=>{ 
-      return {date:e.date.split('T')[0], sector:e.sector}
+      return {date:e.date.split('T')[0], sector:e.sector, actor:e.actor}
     })
     var timelineCount={};
     var timelineSectorCount={};
+    var timelineActorCount={};
     tl.sort((x,y)=>{x.date<y.date})
       .forEach(t=>{ 
-      if (timelineCount[t.date]){ timelineCount[t.date]+=1 } else { timelineCount[t.date]=1 }
-      if (timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]){ timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]+=1 } else { timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]=1 }
+        if (timelineCount[t.date]){ timelineCount[t.date]+=1 } else { timelineCount[t.date]=1 }
+      
+        if (timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]){ timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]+=1 } else { timelineSectorCount[`${t.date}_${t.sector||'Unspecified'}`]=1 }
+        
+        if (timelineActorCount[`${t.date}_${t.actor||'Unspecified'}`]){ timelineActorCount[`${t.date}_${t.actor||'Unspecified'}`]+=1 } else { timelineActorCount[`${t.date}_${t.actor||'Unspecified'}`]=1 }
     })
     
     this.state.sectorPie=sectorPie
@@ -58,6 +62,7 @@ class Dashboard extends Component {
     this.state.revents=events
     this.state.timeline=timelineCount;
     this.state.timelineSector=timelineSectorCount;
+    this.state.timelineActor=timelineActorCount;
   }
 
   render() {
@@ -76,6 +81,12 @@ class Dashboard extends Component {
       sector: [],
       size:[]
     }
+    let dataActor= {
+      date: [],
+      actor: [],
+      size:[]
+    }
+    let actorTraces={}
     Object.keys(this.state['timeline'])
       .sort()
       .forEach(d=>{ 
@@ -92,7 +103,18 @@ class Dashboard extends Component {
         dataSector.sector.push(d.sector)
         dataSector.size.push(this.state['timelineSector'][d.key])
       })
-
+    Object.keys(this.state['timelineActor'])
+      .sort()
+      .map(x=>{
+        return { date:x.split('_')[0], actor:x.split('_')[1], key:x }
+      })
+      .forEach(d=>{ 
+        dataActor.date.push(d.date)
+        dataActor.actor.push(d.actor)
+        dataActor.size.push(this.state['timelineActor'][d.key])
+        if (!actorTraces[d.actor]){actorTraces[d.actor]=[]}
+        actorTraces[d.actor].push(d.date)
+      })
     return (
       <div className="content">
         <div className="container-fluid">
@@ -151,7 +173,8 @@ class Dashboard extends Component {
                          alignItems: 'center',
                          justifyContent: 'center',
                      }}
-                     data={[
+                     data={
+                       [
                        {
                          name:'actors',
                          values: dataPie2.series,
@@ -243,7 +266,47 @@ class Dashboard extends Component {
                    />
 
                 </div>
-                <div className="card-footer ">
+              
+              <div className="card">
+                <div className="card-header ">
+                  <h4 className="card-title">Tracked Actor Activities over Time</h4>
+                  <p className="card-category">Attack</p>
+                </div>
+                <div className="card-body " >
+
+                  <Plot
+                  style={{
+                       display: 'flex',
+                       alignItems: 'center',
+                       justifyContent: 'center',
+                   }}
+                     data={
+                       Object.keys(actorTraces)
+                       .map(a=>{
+                         return { type:'scatter',           
+                           scalemode: "count",
+                           points: "all",
+                           pointpos: 0.45 ,
+                           box: {  visible: true  },
+                           marker: {
+                               line: {
+                                   width: 1.3,
+                                   color: "black"
+                               },
+                               symbol: "line-ns"
+                           },
+                           name:a , x:actorTraces[a] }
+                       })
+                     }
+                     layout={{ autosize:true, font:{size:10},   hovermode:false}}
+                     config={{ displayModeBar:false, modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
+                   />
+
+                </div>
+                
+               </div>
+                
+               <div className="card-footer ">
                   <hr />
                 </div>
               </div>

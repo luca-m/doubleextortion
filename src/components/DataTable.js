@@ -6,9 +6,25 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
+const columns=[{
+            dataField: 'date',
+            text: 'Date'
+          }, {
+            dataField: 'victim',
+            text: 'Victim'
+          }, {
+            dataField: 'sector',
+            text: 'Sector'
+          }, {
+            dataField: 'actor',
+            text: 'Actor'
+          }, {
+            dataField: 'disclosed',
+            text: 'Data Leak'
+          }
+];
 
 class DataTable extends Component {
-  
 
   constructor(props){
     super(props)
@@ -37,29 +53,7 @@ class DataTable extends Component {
       <div className="content">
         <div className="container-fluid">
 
-        <BootstrapTable keyField='idx' data={ data } columns={ [
-          {
-            dataField: 'date',
-            text: 'Date'
-          }, {
-            dataField: 'victim',
-            text: 'Victim'
-          }, {
-            dataField: 'sector',
-            text: 'Sector'
-          }, {
-          }, {
-            dataField: 'site',
-            text: 'company site'
-          }, {
-            dataField: 'actor',
-            text: 'Actor'
-          }, {
-            dataField: 'disclosed',
-            text: 'Data Leak'
-          }, {
-          }
-        ] }
+        <BootstrapTable keyField='idx' data={ data.sort((x,y)=>x.date<y.date) } columns={ columns }
         pagination={ paginationFactory() }
         />
 
