@@ -269,7 +269,7 @@ class Dashboard extends Component {
               
               <div className="card">
                 <div className="card-header ">
-                  <h4 className="card-title">Tracked Actor Activities over Time</h4>
+                  <h4 className="card-title">Actor Activities over Time</h4>
                   <p className="card-category">Attack</p>
                 </div>
                 <div className="card-body " >

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,NavLink } from 'react-router-dom'
 
 import IconButton from '@material-ui/core/IconButton';
 
@@ -21,12 +21,23 @@ class Footer extends Component {
 
         <div className="container-fluid">
         
-          <nav>
-            <ul className="footer-menu">
-              <li>
-              </li>
+          <nav >
+            <ul className="footer-menu ">
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/dashboard'>
+                <p>Dashboard</p>
+              </NavLink>
+            </li>
+            <li className="nav-item ">
+              <NavLink className="nav-link" to='/datatable'>
+                <p>Data Table</p>
+              </NavLink>
+            </li>
+
             </ul>
             <div className="copyright text-center">
+            <p className="text-left">
+            DISCLAIMER: data about ransomware events and attacks are collected through open sources and feeds. The provided data shall be evaluated as is. Don't blindly rely on them to determine if a company has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.</p>
       <p {...{ 'xmlns:dct': "http://purl.org/dc/terms/" }} xmlnscc="http://creativecommons.org/ns#" className="license-text"><a rel="cc:attributionURL" property="dct:title" href="https://doubleextortion.com/">Double Extortion - Ransomware and Breach Tracker</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/allemco/" >Luca Mella</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0<img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
           </div>
           </nav>
