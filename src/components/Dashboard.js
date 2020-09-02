@@ -118,10 +118,40 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <div className="container-fluid">
+
+            <div className="row">
+              <div className="card"> 
+                <div className="card-header "><h4>Introduction</h4>
+                  <p className="card-category"></p>
+                </div>
+                <div className="card-body">
+                  Cyber crime evolved fast in 2020. Coronavirus pandemics accellerate many infamous trend in the cyber-criminal operations: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
+                  More and more criminal groups started to conduct targeted ransomware operations against private and public companies to profit on business interruption caused by their intrusions. 
+                  Affilliation programs, constitution of malicious “RedTeam” units (“DarkTeams”) and the leverage of crimeware infrastructures such as botnets and dark markets lead to a very dangerous environment for companies and their reputation.
+                  <hr />
+                  This tool is a tracking application aimed to monitor the publicly effects of this alarming phenomenon, aiming to raise the awereness of the business and security community. 
+
+                </div>
+              </div>
+            
+            </div>
+
+            <div className="row">
+              <div className="card"> 
+                <div className="card-header "><h4>Dashboard</h4>
+                  <p className="card-category"></p>
+                </div>
+                <div className="card-body">
+                  The DoubleExtortion dashboard summarize the double-extortion events tracked by the tool. 
+                  The following interactive plots helps the understanding of the pheonmenon by aggregating events by industry verticals, threat actor (or affiliation) and also the time evolution of the discovered events.   
+                </div>
+              </div>
+            
+            </div>
               
             <div className="row">
-            <div className="col-md-6">
 
+            <div className="col-md-6">
             <div className="card">
                 <div className="card-header ">
                   <h4 className="card-title">Industry Sector Statistics</h4>
@@ -153,13 +183,12 @@ class Dashboard extends Component {
                   
 
                   <hr />
+                  <small className="text-center">The Industry Vertical plot shows the distribution of events among business sectors. 
+                  Currently we observed <b>{this.state.revents.length}</b> events across <b>{dataPie.labels.length}</b> industries. </small>
                 </div>
               </div>
-
-
             </div>
             <div className="col-md-6">
-
             <div className="card">
                 <div className="card-header ">
                   <h4 className="card-title">Ransomware Actors Statistics</h4>
@@ -189,16 +218,16 @@ class Dashboard extends Component {
                      layout={{ autosize:true, font:{size:10} }}
                      config={{ displayModeBar:false,modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
-                  
-
                   <hr />
+                  <small className="text-center">The Actor Statistics plot shows the distribution of considering the related threat actor or affiliaiton program. 
+                  Currently we observed <b>{dataPie2.labels.length}</b> actors attacking <b>{dataPie.labels.length}</b> industries. </small>
                 </div>
               </div>
-
-
             </div>
             </div>
               
+            <div className="row">
+            <div className="col-md-12">
               
               <div className="card">
                 <div className="card-header ">
@@ -232,9 +261,19 @@ class Dashboard extends Component {
                 </div>
                 <div className="card-footer ">
                   <hr />
+                  <small className="text-center">The Extortion and Breach events plot shows the evolution of double extortion ransomware events operated by threat actors during the time. 
+                  Currently we observed <b>{this.state.revents.length}</b> events distributed among <b>{dataTimeline.series.length}</b> days. </small>
+
                 </div>
               </div>
-              
+            
+            </div>
+            </div>
+
+            
+            <div className="row">
+            <div className="col-md-12">
+
               <div className="card">
                 <div className="card-header ">
                   <h4 className="card-title">Extortions per Industry over Time</h4>
@@ -266,7 +305,17 @@ class Dashboard extends Component {
                    />
 
                 </div>
-              
+                <div className="card-footer ">
+                  <hr />
+                  <small className="text-center">The Extortion per Industry over time plot shows the evolution of double extortion attacks grouped by affected industry sector. </small>
+                </div>
+                </div>
+
+            </div>
+            </div>
+            
+            <div className="row">
+            <div className="col-md-12">
               <div className="card">
                 <div className="card-header ">
                   <h4 className="card-title">Actor Activities over Time</h4>
@@ -301,16 +350,19 @@ class Dashboard extends Component {
                      layout={{ autosize:true, font:{size:10},   hovermode:false}}
                      config={{ displayModeBar:false, modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
+                </div>
+                
+                <div className="card-footer ">
+                <hr />
+                <small className="text-center">The Actor Activities over time plot reports the observed double extortion attempts grouped by threat actor or affiliation program. </small>
 
                 </div>
-                
-               </div>
-                
-               <div className="card-footer ">
-                  <hr />
-                </div>
               </div>
-        
+              
+              
+            </div>
+            </div>
+
         </div>
       </div>
     )

@@ -21,6 +21,20 @@ class Footer extends Component {
 
         <div className="container-fluid">
         
+
+            <div className="row">
+                <div className="card"> 
+                <div className="card-header "><h4>Disclaimer</h4>
+                  <p className="card-category"></p>
+                </div>
+                <div className="card-body">
+                Data about ransomware events and attacks are collected through open sources and feeds. 
+                The provided data shall be evaluated as is. Don't blindly rely on them to determine if a company has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.
+                </div>
+                </div>
+            </div>
+
+
           <nav >
             <ul className="footer-menu ">
             <li className="nav-item">
@@ -36,9 +50,8 @@ class Footer extends Component {
 
             </ul>
             <div className="copyright text-center">
-            <p className="text-left">
-            DISCLAIMER: data about ransomware events and attacks are collected through open sources and feeds. The provided data shall be evaluated as is. Don't blindly rely on them to determine if a company has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.</p>
-      <p {...{ 'xmlns:dct': "http://purl.org/dc/terms/" }} xmlnscc="http://creativecommons.org/ns#" className="license-text"><a rel="cc:attributionURL" property="dct:title" href="https://doubleextortion.com/">Double Extortion - Ransomware and Breach Tracker</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/allemco/" >Luca Mella</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0<img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+
+            <p {...{ 'xmlns:dct': "http://purl.org/dc/terms/" }} xmlnscc="http://creativecommons.org/ns#" className="license-text"><a rel="cc:attributionURL" property="dct:title" href="https://doubleextortion.com/">Double Extortion - Ransomware and Breach Tracker</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/allemco/" >Luca Mella</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0<img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" /><img style={{"height":"22px","marginLeft":"3px","verticalAlign":"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
           </div>
           </nav>
         </div>
