@@ -32,15 +32,25 @@ class Dashboard extends Component {
       if(actorsCount[s]){actorsCount[s]+=1}else{actorsCount[s]=1} 
     })
     let sectorPie={ 
-        labels:Object.keys(sectorsCount),
-        series:[]//Object.values(sectorsCount)
+        labels:[], //Object.keys(sectorsCount),
+        series:[]  //Object.values(sectorsCount)
     }
     let actorPie={ 
-        labels:Object.keys(actorsCount),
-        series:[]//Object.values(actorsCount)
+        labels:[], //Object.keys(actorsCount),
+        series:[]  //Object.values(actorsCount)
     }
-    sectorPie.labels.forEach(k=>{ sectorPie.series.push(sectorsCount[k]) })
-    actorPie.labels.forEach(k=>{ actorPie.series.push(actorsCount[k]) })
+    // sorted sector
+    var tmp_sector=[]
+    for (let k in sectorsCount){ tmp_sector.push({s:k,c:sectorsCount[k]}) }
+    tmp_sector=tmp_sector.sort((a,b)=> (a.c < b.c) ? 1 : ((b.c < a.c) ? -1 : 0) )
+    tmp_sector.forEach(e=>{ sectorPie.labels.push(e.s); sectorPie.series.push(e.c) })    
+
+    //sectorPie.labels.forEach(k=>{ sectorPie.series.push(sectorsCount[k]) })
+    var tmp_actor=[]
+    for (let k in actorsCount){ tmp_actor.push({s:k,c:actorsCount[k]}) }
+    tmp_actor=tmp_actor.sort((a,b)=> (a.c < b.c) ? 1 : ((b.c < a.c) ? -1 : 0) )
+    tmp_actor.forEach(e=>{  actorPie.labels.push(e.s); actorPie.series.push(e.c) })    
+    //actorPie.labels.forEach(k=>{ actorPie.series.push(actorsCount[k]) })
 
     let tl = events.map(e=>{ 
       return {date:e.date.split('T')[0], sector:e.sector, actor:e.actor}
@@ -101,7 +111,7 @@ class Dashboard extends Component {
       .forEach(d=>{ 
         dataSector.date.push(d.date)
         dataSector.sector.push(d.sector)
-        dataSector.size.push(this.state['timelineSector'][d.key])
+        dataSector.size.push(this.state['timelineSector'][ d.key ] )
       })
     Object.keys(this.state['timelineActor'])
       .sort()
@@ -115,6 +125,7 @@ class Dashboard extends Component {
         if (!actorTraces[d.actor]){actorTraces[d.actor]=[]}
         actorTraces[d.actor].push(d.date)
       })
+    console.log(dataPie)
     return (
       <div className="content">
         <div className="container-fluid">
@@ -125,11 +136,11 @@ class Dashboard extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  Cyber crime evolved fast in 2020. Coronavirus pandemics accellerate many infamous trend in the cyber-criminal operations: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
-                  More and more criminal groups started to conduct targeted ransomware operations against private and public companies to profit on business interruption caused by their intrusions. 
-                  Affilliation programs, constitution of malicious “RedTeam” units (“DarkTeams”) and the leverage of crimeware infrastructures such as botnets and dark markets lead to a very dangerous environment for companies and their reputation.
+                  Cyber crime evolved fast in 2020. Covid19 pandemics accellerated an infamous cyber-criminal trend: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
+                  An increasing number of criminal groups started to conduct targeted ransomware operations against private and public organizations, to profit on business interruption and confidential information. 
+                  Affilliation programs, constitution of malicious red team units - the so called “Dark Teams” - and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that need to be understood.
                   <hr />
-                  This tool is a tracking application aimed to monitor the publicly effects of this alarming phenomenon, aiming to raise the awereness of the business and security community. 
+                  This tool is a tracking application aimed to monitor the publicly effects of the alarming double extortion phenomenon, aiming to raise the security awereness of organizations and security community. 
 
                 </div>
               </div>
@@ -154,7 +165,7 @@ class Dashboard extends Component {
             <div className="col-md-6">
             <div className="card">
                 <div className="card-header ">
-                  <h4 className="card-title">Industry Sector Statistics</h4>
+                  <h4 className="card-title">Top 10 Attacked Industries</h4>
                   <p className="card-category">Victims</p>
                 </div>
                 <div className="card-body">
@@ -168,8 +179,8 @@ class Dashboard extends Component {
                      data={[
                        {
                          name:'sectors',
-                         values: dataPie.series,
-                         labels: dataPie.labels,
+                         values: dataPie.series.slice(0,10),
+                         labels: dataPie.labels.slice(0,10),
                          type: 'pie',
                          colorscale:'Prism',
                          pull:0.05,
@@ -183,7 +194,7 @@ class Dashboard extends Component {
                   
 
                   <hr />
-                  <small className="text-center">The Industry Vertical plot shows the distribution of events among business sectors. 
+                  <small className="text-center">The Industry Vertical plot shows the distribution of events among the top 10 impacted business sectors.<br/>
                   Currently we observed <b>{this.state.revents.length}</b> events across <b>{dataPie.labels.length}</b> industries. </small>
                 </div>
               </div>
@@ -191,7 +202,7 @@ class Dashboard extends Component {
             <div className="col-md-6">
             <div className="card">
                 <div className="card-header ">
-                  <h4 className="card-title">Ransomware Actors Statistics</h4>
+                  <h4 className="card-title">Top 10 Ransomware Actors</h4>
                   <p className="card-category">Attacks</p>
                 </div>
                 <div className="card-body">
@@ -206,8 +217,8 @@ class Dashboard extends Component {
                        [
                        {
                          name:'actors',
-                         values: dataPie2.series,
-                         labels: dataPie2.labels,
+                         values: dataPie2.series.slice(0,10),
+                         labels: dataPie2.labels.slice(0,10),
                          type: 'pie',
                          colorscale:'Prism',
                          pull:0.05,
@@ -219,7 +230,7 @@ class Dashboard extends Component {
                      config={{ displayModeBar:false,modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
                   <hr />
-                  <small className="text-center">The Actor Statistics plot shows the distribution of considering the related threat actor or affiliaiton program. 
+                  <small className="text-center">The Actor Statistics plot shows the distribution of the top 10 threat actor or affiliaiton program causing most of the observed attacks.<br/>
                   Currently we observed <b>{dataPie2.labels.length}</b> actors attacking <b>{dataPie.labels.length}</b> industries. </small>
                 </div>
               </div>
@@ -252,7 +263,17 @@ class Dashboard extends Component {
                          automargin:true,
                          fill:'tozeroy',
                          marker:{line:{width:0.5}}
-                       }
+                       },
+                       /*{
+                         name:'comul',
+                         x: dataTimeline.labels.map(t=> new Date(t)),
+                         y: dataTimeline.labels.map((t,i) => dataTimeline.series.slice(0,i+1).reduce((x,y)=>x+y) / dataTimeline.series.reduce((x,y)=>x+y) ),
+                         type: 'scatter',
+                         colorscale:'D3',
+                         automargin:true,
+                         fill:'tozeroy',
+                         marker:{line:{width:0.5}}
+                       }*/
                      ]}
                      layout={{ autosize:true, font:{size:10} }}
                      config={{ displayModeBar:false,modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
@@ -279,13 +300,14 @@ class Dashboard extends Component {
                   <h4 className="card-title">Extortions per Industry over Time</h4>
                   <p className="card-category">Victims</p>
                 </div>
-                <div className="card-body " >
+                <div className="card-body" >
 
                   <Plot
                   style={{
                        display: 'flex',
                        alignItems: 'center',
                        justifyContent: 'center',
+                       height:`${27*new Set(dataSector.sector).size}px`,
                    }}
                      data={[
                        {
@@ -294,13 +316,13 @@ class Dashboard extends Component {
                         mode: 'markers',
                         type:'scatter',
                         marker: {
-                          size: dataSector.size.map(x=>x*10)
+                          size: dataSector.size.map(x=>x*7)
                         },
-                        text: dataSector.size,
+                        //text: dataSector.size,
                         color: dataSector.sector
                        }
                      ]}
-                     layout={{ autosize:true, font:{size:10},   hovermode:false}}
+                     layout={{ autosize:true, font:{size:12 }, hovermode:true, yaxis:{autorange:'reversed', gridcolor:'darkGrey',tickangle:-45,range:new Set(dataSector.sector).size-1  } }}
                      config={{ displayModeBar:false, modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
 

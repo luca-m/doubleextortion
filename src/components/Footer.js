@@ -29,7 +29,7 @@ class Footer extends Component {
                 </div>
                 <div className="card-body">
                 Data about ransomware events and attacks are collected through open sources and feeds. 
-                The provided data shall be evaluated as is. Don't blindly rely on them to determine if a company has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.
+                The provided data shall be evaluated as is. Don't blindly rely on them to determine if an organization has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.
                 </div>
                 </div>
             </div>

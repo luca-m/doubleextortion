@@ -18,9 +18,6 @@ const columns=[{
           }, {
             dataField: 'actor',
             text: 'Actor'
-          }, {
-            dataField: 'disclosed',
-            text: 'Data Leak'
           }
 ];
 
@@ -48,6 +45,7 @@ class DataTable extends Component {
     data.forEach((d,i)=>{
       d.idx=i
       d.date = d.date.split('T')[0] 
+      
     });
     return (
       <div className="content">
@@ -59,11 +57,11 @@ class DataTable extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  Cyber crime evolved fast in 2020. Coronavirus pandemics accellerate many infamous trend in the cyber-criminal operations: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
-                  More and more criminal groups started to conduct targeted ransomware operations against private and public companies to profit on business interruption caused by their intrusions. 
-                  Affilliation programs, constitution of malicious “RedTeam” units (“DarkTeams”) and the leverage of crimeware infrastructures such as botnets and dark markets lead to a very dangerous environment for companies and their reputation.
+                  Cyber crime evolved fast in 2020. Covid19 pandemics accellerated an infamous cyber-criminal trend: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
+                  An increasing number of criminal groups started to conduct targeted ransomware operations against private and public organizations, to profit on business interruption and confidential information. 
+                  Affilliation programs, constitution of malicious red team units - the so called “Dark Teams” - and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that need to be understood.
                   <hr />
-                  This tool is a tracking application aimed to monitor the publicly effects of this alarming phenomenon, aiming to raise the awereness of the business and security community. 
+                  This tool is a tracking application aimed to monitor the publicly effects of the alarming double extortion phenomenon, aiming to raise the security awereness of organizations and security community. 
 
                 </div>
               </div>
@@ -76,14 +74,14 @@ class DataTable extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  The DoubleExtortion data table reports the double-extortion events tracked by the tool to enable companies and security community to raise the awareness about the problem and associated risks (e.g. supply chain risk). 
-                  The table includes the company names <b>claimed</b> by threat actor or news, but we <b>strongly</b> advice to double check the claims before taking any kind of decision based on the tracked events.
+                  The DoubleExtortion data table reports the double extortion events tracked by the tool to help to raise the security awareness of organizations and security community, especially related to the associated risks such as the supply chain risk. 
+                  The table includes the organization names <b>claimed</b> by threat actor or news media as potential victim of cyber extortions, but I <b>strongly</b> advise to double check the claims before taking any kind of decision based on the events tracked by the tool.
                 </div>
               </div>
             
             </div>
 
-        <BootstrapTable keyField='idx' data={ data.sort((x,y)=>x.date<y.date) } columns={ columns }
+        <BootstrapTable keyField='idx' data={ data.sort((a,b)=> (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)     ) } columns={ columns }
         pagination={ paginationFactory() }
         />
 
