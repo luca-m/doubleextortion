@@ -165,7 +165,7 @@ class Dashboard extends Component {
             <div className="col-md-6">
             <div className="card">
                 <div className="card-header ">
-                  <h4 className="card-title">Top 10 Attacked Industries</h4>
+                  <h4 className="card-title">Top 10 Threatened Industries</h4>
                   <p className="card-category">Victims</p>
                 </div>
                 <div className="card-body">
@@ -183,10 +183,18 @@ class Dashboard extends Component {
                          labels: dataPie.labels.slice(0,10),
                          type: 'pie',
                          colorscale:'Prism',
+                         color:'Prism',
                          pull:0.05,
                          automargin:true,
-                         marker:{line:{width:0.5}}
-                       }
+                         marker:{ line:{width:0.5}, 
+                                  colors: 
+                                  ["#fff7ec","#fff7ec","#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"].reverse()
+                                  .map(hex=>{
+                                    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                                      return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : '#000';
+                                  })
+                                }
+                       },
                      ]}
                      layout={{ autosize:true, font:{size:10} }}
                      config={{ displayModeBar:false,modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
@@ -202,7 +210,7 @@ class Dashboard extends Component {
             <div className="col-md-6">
             <div className="card">
                 <div className="card-header ">
-                  <h4 className="card-title">Top 10 Ransomware Actors</h4>
+                  <h4 className="card-title">Top 10 Threat Groups</h4>
                   <p className="card-category">Attacks</p>
                 </div>
                 <div className="card-body">
@@ -220,13 +228,21 @@ class Dashboard extends Component {
                          values: dataPie2.series.slice(0,10),
                          labels: dataPie2.labels.slice(0,10),
                          type: 'pie',
-                         colorscale:'Prism',
+                         mode:'markers',
+                         marker:{ line:{width:0.5}, 
+                                  colors: 
+                                  ["#fff7ec","#fff7ec","#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"].reverse()
+                                  .map(hex=>{
+                                    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                                      return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : '#000';
+                                  })
+                         },
                          pull:0.05,
-                         automargin:true,
-                         marker:{line:{width:0.5}}
+                         automargin:true
                        }
                      ]}
-                     layout={{ autosize:true, font:{size:10} }}
+                     layout={{ autosize:true, font:{size:10},
+                      }}
                      config={{ displayModeBar:false,modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
                   <hr />
