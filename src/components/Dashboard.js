@@ -329,16 +329,27 @@ class Dashboard extends Component {
                        {
                         x: dataSector.date,
                         y: dataSector.sector,
+                        texttemplate:'Day: %{x|%A}"',
                         mode: 'markers',
                         type:'scatter',
+                        
                         marker: {
-                          size: dataSector.size.map(x=>x*7)
+                          size: dataSector.size.map(x=>x*7),
+                          color: dataSector.size.map(x=>x*7),
+                          line:{color:'#444', width:'1px'}
                         },
-                        //text: dataSector.size,
-                        color: dataSector.sector
+                                                
                        }
                      ]}
-                     layout={{ autosize:true, font:{size:12 }, hovermode:true, yaxis:{autorange:'reversed', gridcolor:'darkGrey',tickangle:-45,range:new Set(dataSector.sector).size-1  } }}
+                     layout={{ autosize:true, font:{size:12 }, hovermode:true, 
+                                yaxis:{ 
+                                  autorange:'reversed', gridcolor:'darkGrey',
+                                  tickangle:-45,
+                                  fixedrange:false, 
+                                  constrain:"domain",
+                                  //range:new Set(dataSector.sector).size-1
+                                } 
+                            }}
                      config={{ displayModeBar:false, modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
 
@@ -366,6 +377,7 @@ class Dashboard extends Component {
                        display: 'flex',
                        alignItems: 'center',
                        justifyContent: 'center',
+                       height:`${25*Object.keys(actorTraces).length}px`,
                    }}
                      data={
                        Object.keys(actorTraces)
@@ -385,7 +397,7 @@ class Dashboard extends Component {
                            name:a , x:actorTraces[a] }
                        })
                      }
-                     layout={{ autosize:true, font:{size:10},   hovermode:false}}
+                     layout={{ autosize:true, font:{size:10},   hovermode:false, colorscale:'D3'}}
                      config={{ displayModeBar:false, modeBarButtonsToRemove: ['pan2d','select2d','lasso2d','resetScale2d','zoomOut2d']  }}
                    />
                 </div>
