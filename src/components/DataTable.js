@@ -5,6 +5,8 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import { CSVLink, CSVDownload } from "react-csv";
+
 
 const columns=[{
             dataField: 'date',
@@ -52,7 +54,7 @@ class DataTable extends Component {
         <div className="container-fluid">
 
             <div className="row">
-              <div className="card"> 
+              <div className="card w-100"> 
                 <div className="card-header "><h4>Introduction</h4>
                   <p className="card-category"></p>
                 </div>
@@ -69,7 +71,7 @@ class DataTable extends Component {
             </div>
 
             <div className="row">
-              <div className="card"> 
+              <div className="card  w-100"> 
                 <div className="card-header "><h4>Data Table</h4>
                   <p className="card-category"></p>
                 </div>
@@ -81,9 +83,19 @@ class DataTable extends Component {
             
             </div>
 
-        <BootstrapTable keyField='idx' data={ data.sort((a,b)=> (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)     ) } columns={ columns }
-        pagination={ paginationFactory() }
-        />
+            <div className="row">
+              <div className="card w-100">
+              <div className="card-header">
+              <h5>Export CSV data <CSVLink className="link-dark" filename={`doubleextortion_export_${new Date().toISOString()}.csv`} data={data.map(e=>{delete e.breached; delete e.disclosed; delete e.encrypted; delete e.idx;return e;})}><i className="nc-icon nc-cloud-download-93"></i></CSVLink>
+              </h5>
+              </div>
+              <div className="card-body justify-content-center">
+                <BootstrapTable keyField='idx' data={ data.sort((a,b)=> (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)     ) } columns={ columns }
+                pagination={ paginationFactory() }
+                />
+              </div>
+              </div>
+          </div>
 
         </div>
       </div>

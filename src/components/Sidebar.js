@@ -24,7 +24,12 @@ class Sidebar extends Component {
                 <p>Data Table</p>
               </NavLink>
             </li>
-
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/about'>
+                <i className="nc-icon nc-tap-01"></i>
+                <p>About</p>
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

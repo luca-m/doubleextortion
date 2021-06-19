@@ -131,7 +131,7 @@ class Dashboard extends Component {
         <div className="container-fluid">
 
             <div className="row">
-              <div className="card"> 
+              <div className="card w-100"> 
                 <div className="card-header "><h4>Introduction</h4>
                   <p className="card-category"></p>
                 </div>
@@ -148,7 +148,7 @@ class Dashboard extends Component {
             </div>
 
             <div className="row">
-              <div className="card"> 
+              <div className="card w-100"> 
                 <div className="card-header "><h4>Dashboard</h4>
                   <p className="card-category"></p>
                 </div>
@@ -402,7 +402,7 @@ class Dashboard extends Component {
                    />
                 </div>
                 
-                <div className="card-footer ">
+                <div className="card-footer w-100">
                 <hr />
                 <small className="text-center">The Actor Activities over time plot reports the observed double extortion attempts grouped by threat actor or affiliation program. </small>
 
