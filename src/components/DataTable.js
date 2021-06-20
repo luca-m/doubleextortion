@@ -97,6 +97,32 @@ class DataTable extends Component {
               </div>
           </div>
 
+          <div className="row">
+              <div className="card  w-100"> 
+                <div className="card-header "><h4>I need to use these data on my research project, how should I do?</h4>
+                  <p className="card-category"></p>
+                </div>
+                <div className="card-body">
+                  If you are a researcher and you want to use the DoubleExtortion.com data for your research or publication, feel free to use it: the data is available under the <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> license, so just cite me.
+                  <br/>
+                  For instance you could use a bibtex reference like that:
+                  <br/><br/>
+                  <code>{`
+@misc{ LM,
+       author = "Luca Mella, M.Eng.",
+       title = "Double Extortion Ransomware Tracker",
+       year = "${new Date().getFullYear()}",
+       url = "https://doubleextortion.com/",
+   note = "[Online; ${new Date().toDateString()}]"
+     }
+`}
+                  </code>
+
+                </div>
+              </div>
+            
+            </div>
+
         </div>
       </div>
     )
