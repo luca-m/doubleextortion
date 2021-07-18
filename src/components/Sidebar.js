@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import { NavLink, Link } from 'react-router-dom'
+
 
 class Sidebar extends Component {
   render() {
@@ -29,6 +31,14 @@ class Sidebar extends Component {
                 <i className="nc-icon nc-tap-01"></i>
                 <p>About</p>
               </NavLink>
+            </li>
+              <div class="dropdown-divider"></div>
+
+            <li className="nav-item">
+              <a className="nav-link" target="_blank" href="https://www.buymeacoffee.com/doubleextortion" >
+                <img src="bmc.svg"  width="32" alt="Buy me a coffee" />
+                <p>Buy me a coffee</p>
+                </a>
             </li>
           </ul>
         </div>
