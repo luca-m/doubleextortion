@@ -59,11 +59,11 @@ class DataTable extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  Cyber crime evolved fast in 2020. Covid19 pandemics accellerated an infamous cyber-criminal trend: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
-                  An increasing number of criminal groups started to conduct targeted ransomware operations against private and public organizations, to profit on business interruption and confidential information. 
-                  Affilliation programs, constitution of malicious red team units - the so called “Dark Teams” - and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that need to be understood.
+                  Cyber crime has evolved fast in recent years. Covid19 pandemics strongly  accelerated an infamous cyber-criminal trend, the <b>Double Extortion</b> practice: extort money for ransomware attack and steal data from the company to extort money again and add pressure on the victim. 
+                  An increasing number of criminal groups joined this practice and now conduct targeted ransomware  operations and double extortion practice against private and public organizations, to profit on business interruption and confidential information. 
+                  Affiliate programs, the constitution of an ecosystem of malicious offensive units and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that needs to be understood.
                   <hr />
-                  This tool is a tracking application aimed to monitor the publicly effects of the alarming double extortion phenomenon, aiming to raise the security awereness of organizations and security community. 
+                  The “DoubleExtortion.com” tool is a tracking application aimed to monitor the scope of this alarming cyber criminal phenomenon, aiming to raise the awareness of organizations, the security community, and the industries, because the impact of this kind of attacks involves all of us, both enterprises, private citizens and also governments.
 
                 </div>
               </div>
@@ -76,8 +76,8 @@ class DataTable extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  The DoubleExtortion data table reports the double extortion events tracked by the tool to help to raise the security awareness of organizations and security community, especially related to the associated risks such as the supply chain risk. 
-                  The table includes the organization names <b>claimed</b> by threat actor or news media as potential victim of cyber extortions, but I <b>strongly</b> advise to double check the claims before taking any kind of decision based on the events tracked by the tool.
+                  The DoubleExtortion data table reports the extortion events tracked by the tool to help to raise the awareness of organizations, especially regarding the supply chain risks, that may quickly escalate in case of double extortion attacks. 
+                  The data table includes the organization names <b>claimed</b> by threat actors or news media as potential victims of cyber extortions, but I <b>strongly</b> advise to <b>verify</b> the claims before taking any kind of decision based on the events tracked by the tool.
                 </div>
               </div>
             

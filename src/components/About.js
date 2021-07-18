@@ -39,7 +39,7 @@ class About extends Component {
 
          
         <div className="row">
-          <div className="card "> 
+          <div className="card w-100"> 
             <div className="card-header">
               
             </div>
@@ -52,11 +52,11 @@ class About extends Component {
                 <br/>
                 <p className="card-text">Luca is a Cyber Security professional with deep passion for hacking and intimate curiosity for the digital world. 
                 <br/>
-                Currently, Luca is Manager at <a href="https://yoroi.company/">Yoroi</a>, heading the CERT unit and overseeing the <a href="https://yoroi.company/category/research/">malware research</a> program. He teach how to analyze modern malware at <a href="https://master.unibo.it/cybersecurity/en/programme">University of Bologna</a>.  
+                Currently, Luca is manager at <a href="https://yoroi.company/">Yoroi</a>, heading the CERT unit and overseeing the <a href="https://yoroi.company/category/research/">malware research</a> program. He teach how to analyze modern malware at <a href="https://master.unibo.it/cybersecurity/en/programme">University of Bologna</a>.  
                 <br/><br/>
                 He is a former member of the <a href="https://ctftime.org/team/520">ANeSeC</a> CTF team, one of the firsts Italian war-game teams born back in 2011.  
                 <br/><br/>
-                In 2019 Luca was mentioned by Peerlyst as one of the "32 Influential Malware Research Professionals".
+                In 2019, Luca was mentioned as one of the "32 Influential Malware Research Professionals".
 
                 </p>
               </div>

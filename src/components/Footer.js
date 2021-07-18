@@ -23,13 +23,16 @@ class Footer extends Component {
         
 
             <div className="row">
-                <div className="card"> 
-                <div className="card-header "><h4>Disclaimer</h4>
+                <div className="card w-100"> 
+                <div className="card-header"><h4>Disclaimer</h4>
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                Data about ransomware events and attacks are collected through open sources and feeds. 
-                The provided data shall be evaluated as is. Dont blindly rely on them to determine if an organization has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.
+                Data about ransomware events and attacks are collected through open sources intelligence and data feeds. 
+                <br/>
+                The data are provided “as is”, without any kind of warranty. 
+                <br/>
+                Don’t blindly rely on them to determine if an organization has been impacted by a double-extortion attack, criminals could also lie even during the disclosure of their victims, and remember, OSINT needs to be treated with caution.
                 </div>
                 </div>
             </div>

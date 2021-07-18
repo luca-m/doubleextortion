@@ -136,11 +136,11 @@ class Dashboard extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  Cyber crime evolved fast in 2020. Covid19 pandemics accellerated an infamous cyber-criminal trend: the <b>Double Extortion</b> practice, extort money for ransomware keys and extort money to avoid the disclosure of stolen data. 
-                  An increasing number of criminal groups started to conduct targeted ransomware operations against private and public organizations, to profit on business interruption and confidential information. 
-                  Affilliation programs, constitution of malicious red team units - the so called “Dark Teams” - and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that need to be understood.
+                  Cyber crime has evolved fast in recent years. Covid19 pandemics strongly  accelerated an infamous cyber-criminal trend, the <b>Double Extortion</b> practice: extort money for ransomware attack and steal data from the company to extort money again and add pressure on the victim. 
+                  An increasing number of criminal groups joined this practice and now conduct targeted ransomware  operations and double extortion practice against private and public organizations, to profit on business interruption and confidential information. 
+                  Affiliate programs, the constitution of an ecosystem of malicious offensive units and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that needs to be understood.
                   <hr />
-                  This tool is a tracking application aimed to monitor the publicly effects of the alarming double extortion phenomenon, aiming to raise the security awereness of organizations and security community. 
+                  The “DoubleExtortion.com” tool is a tracking application aimed to monitor the scope of this alarming cyber criminal phenomenon, aiming to raise the awareness of organizations, the security community, and the industries, because the impact of this kind of attacks involves all of us, both enterprises, private citizens and also governments.
 
                 </div>
               </div>
@@ -153,8 +153,8 @@ class Dashboard extends Component {
                   <p className="card-category"></p>
                 </div>
                 <div className="card-body">
-                  The DoubleExtortion dashboard summarize the double-extortion events tracked by the tool. 
-                  The following interactive plots helps the understanding of the pheonmenon by aggregating events by industry verticals, threat actor (or affiliation) and also the time evolution of the discovered events.   
+                   The DoubleExtortion dashboard summarizes the cyber attack events tracked by the tool. 
+                  The following interactive plots help the understanding of the phenomenon by aggregating events by industry verticals, threat actor (or affiliation) and also the time evolution of the discovered events.   
                 </div>
               </div>
             
@@ -298,7 +298,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="card-footer ">
                   <hr />
-                  <small className="text-center">The Extortion and Breach events plot shows the evolution of double extortion ransomware events operated by threat actors during the time. 
+                  <small className="text-center">The Extortion and Breach events plot shows the evolution of double extortion events operated by threat actors during the time. 
                   Currently we observed <b>{this.state.revents.length}</b> events distributed among <b>{dataTimeline.series.length}</b> days. </small>
 
                 </div>
