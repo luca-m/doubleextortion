@@ -60,8 +60,8 @@ class DataTable extends Component {
                 </div>
                 <div className="card-body">
                   Cyber crime has evolved fast in recent years. Covid19 pandemics strongly  accelerated an infamous cyber-criminal trend, the <b>Double Extortion</b> practice: extort money for ransomware attack and steal data from the company to extort money again and add pressure on the victim. 
-                  An increasing number of criminal groups joined this practice and now conduct targeted ransomware  operations and double extortion practice against private and public organizations, to profit on business interruption and confidential information. 
-                  Affiliate programs, the constitution of an ecosystem of malicious offensive units and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that needs to be understood.
+                  <br/><br/>An increasing number of criminal groups joined this practice and now conduct targeted ransomware  operations and double extortion practice against private and public organizations, to profit on business interruption and confidential information. 
+                  <br/>Affiliate programs, the constitution of an ecosystem of malicious offensive units and the leverage of crimeware infrastructures such as botnets and dark markets are leading to a very dangerous digital environment that needs to be understood.
                   <hr />
                   The “DoubleExtortion.com” tool is a tracking application aimed to monitor the scope of this alarming cyber criminal phenomenon, aiming to raise the awareness of organizations, the security community, and the industries, because the impact of this kind of attacks involves all of us, both enterprises, private citizens and also governments.
 
